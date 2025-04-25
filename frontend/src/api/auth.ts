@@ -1,7 +1,9 @@
-const API_URL = 'http://localhost:3000';
-
+const url = import.meta.env.VITE_API_URL;
+// const url = 'http://localhost:3000'
 export const signIn = async (email: string, password: string) => {
-  const res = await fetch(`${API_URL}/auth/signin`, {
+  console.log(import.meta.env.VITE_API_URL);
+
+  const res = await fetch(`${url}/auth/signin`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password }),
@@ -10,7 +12,7 @@ export const signIn = async (email: string, password: string) => {
   return res.json();
 };
 export const signUp = async (email: string, password: string) => {
-    const res = await fetch(`${API_URL}/auth/signup`, {
+    const res = await fetch(`${url}/auth/signup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password, role: 'user' }),
